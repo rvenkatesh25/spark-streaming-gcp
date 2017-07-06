@@ -1,2 +1,61 @@
 *.class
 *.log
+*.iml
+tags
+
+metastore_db/
+
+# Python virtualenv for deploy
+environment/
+
+# sbt specific
+.cache
+.history
+.lib/
+dist/*
+target/
+target-gcp/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet.idea/scopes/
+.idea
+.idea/dictionaries/
+.idea/inspectionProfiles/
+.idea/libraries/
+.idea/modules/
+.idea/.name
+.idea/*.xml
+.idea_modules/
+!.idea/vcs.xml
+!.idea/uiDesigner.xml
+/classes
+/dist
+/out
+/SDK/*SDK
+/target
+/*.bat
+*.class
+out
+build
+.DS_Store
+*~
+target/
+*.pyc
+
+testdata/debugger
+
+# Play specific
+logs/
+
+#deploy specific
+app_bundle.zip
+
+# scripts/vendoring-jars specific
+/scripts/vendoring-jars/tt-deb-internal.private.*
+/scripts/vendoring-jars/jars
+/scripts/vendoring-jars/*.deb
