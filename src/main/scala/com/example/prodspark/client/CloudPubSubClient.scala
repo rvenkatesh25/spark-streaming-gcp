@@ -1,4 +1,4 @@
-package com.thumbtack.common.gcp
+package com.example.prodspark.client
 
 import com.google.api.client.googleapis.auth.oauth2.GoogleCredential
 import com.google.api.client.googleapis.json.GoogleJsonResponseException
@@ -9,7 +9,8 @@ import com.google.common.util.concurrent.RateLimiter
 import java.io.IOException
 import java.net.HttpURLConnection
 
-import com.thumbtack.common.util.RetryUtil
+import com.example.prodspark.model.{CloudPubSubConfig, CloudPubSubMessage, CloudPubSubSubscription, CloudPubSubTopic}
+import com.example.prodspark.util.RetryUtil
 import org.slf4j.LoggerFactory
 
 import scala.collection.JavaConverters._

@@ -3,9 +3,9 @@ package com.example.prodspark.connector
 import java.nio.charset.StandardCharsets
 import java.util
 
+import com.example.prodspark.client.BigQueryClient
 import com.google.api.services.bigquery.model.TableDataInsertAllRequest
 import com.google.gson.Gson
-import com.thumbtack.common.gcp.BigQueryUtil
 import com.example.prodspark.util.ListUtil._
 import org.apache.spark.FutureAction
 import org.apache.spark.rdd.{AsyncRDDActions, RDD}
@@ -84,7 +84,7 @@ object BigQuerySink {
     rows
       .groupedBySize(limits.REQUEST_LIMIT_BYTES)
       .foreach { c =>
-        BigQueryUtil.streamingInsert(c.map(_._2), tableSpec, projectId)
+        BigQueryClient.streamingInsert(c.map(_._2), tableSpec, projectId)
         log.debug(s"[$tableSpec] Inserted ${c.length} rows")
       }
   }

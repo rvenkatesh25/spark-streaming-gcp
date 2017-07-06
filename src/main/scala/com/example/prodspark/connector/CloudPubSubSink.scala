@@ -3,9 +3,10 @@ package com.example.prodspark.connector
 import java.nio.charset.StandardCharsets
 import java.util.Base64
 
+import com.example.prodspark.client.CloudPubSubClient
+import com.example.prodspark.model.{CloudPubSubConfig, CloudPubSubTopic}
+import com.example.prodspark.util.ListUtil._
 import com.google.api.services.pubsub.model.PubsubMessage
-import com.thumbtack.common.gcp.{CloudPubSubClient, CloudPubSubConfig, CloudPubSubTopic}
-import com.thumbtack.common.util.ListUtil._
 import org.apache.spark.FutureAction
 import org.apache.spark.rdd.{AsyncRDDActions, RDD}
 

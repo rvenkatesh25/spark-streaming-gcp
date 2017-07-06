@@ -1,6 +1,6 @@
 package com.example.prodspark.connector
 
-import com.thumbtack.common.gcp.{CloudPubSubConfig, CloudPubSubMessage, CloudPubSubSubscription}
+import com.example.prodspark.model.{CloudPubSubConfig, CloudPubSubMessage, CloudPubSubSubscription}
 import org.apache.spark.streaming.dstream.{DStream, InputDStream}
 import org.apache.spark.streaming.StreamingContext
 

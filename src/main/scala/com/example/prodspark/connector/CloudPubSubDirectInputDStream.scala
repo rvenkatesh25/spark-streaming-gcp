@@ -1,7 +1,9 @@
 package com.example.prodspark.connector
 
-import com.thumbtack.common.gcp._
 import java.io.IOException
+
+import com.example.prodspark.client.CloudPubSubClient
+import com.example.prodspark.model.{CloudPubSubConfig, CloudPubSubMessage, CloudPubSubSubscription}
 import org.apache.spark.rdd.RDD
 import org.apache.spark.streaming._
 import org.apache.spark.streaming.dstream.InputDStream

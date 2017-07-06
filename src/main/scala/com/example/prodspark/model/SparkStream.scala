@@ -1,4 +1,4 @@
-package com.thumbtack.common.model
+package com.example.prodspark.model
 
 import org.apache.spark.SparkConf
 import org.apache.spark.streaming.scheduler._
@@ -6,8 +6,6 @@ import org.apache.spark.streaming.{Seconds, StreamingContext}
 import org.slf4j.{Logger, LoggerFactory}
 
 trait SparkStream[T] {
-  def streamConfig: SparkStreamConfig[T]
-
   /**
     * Override this in your job if you need to set other
     * Spark Streaming config variables before running.
@@ -42,7 +40,6 @@ trait SparkStream[T] {
     // operations are usually the slowest step
     c.set("spark.locality.wait", "0s")
 
-    "spark.task.maxFailures"
     if (isLocal) {
       // for local testing access spark UI at
       // http://localhost:4158/jobs/
@@ -61,18 +58,16 @@ trait SparkStream[T] {
   /**
     * Main logic of the streaming job should be defined by overriding this method
     *
-    * @param config Job specific configuration
     * @param ssc streaming context to attach the input source to
     */
-  def main(config: T, ssc: StreamingContext): Unit
+  def main(ssc: StreamingContext): Unit
 
-  private def createStreamingContext(config: T): StreamingContext = {
+  private def createStreamingContext(): StreamingContext = {
     val ssc = new StreamingContext(conf, Seconds(batchDurationSeconds))
-    main(config, ssc)
+    main(ssc)
     ssc.checkpoint(getCheckPointPath)
     ssc
   }
-  "spark.scheduler.mode: FAIR
 
   /**
     * Entry point of the program - at the first run it sets up the streaming context
@@ -84,7 +79,7 @@ trait SparkStream[T] {
   final def main(args: Array[String]): Unit = {
     val ssc = StreamingContext.getOrCreate(
       getCheckPointPath,
-      () => createStreamingContext(streamConfig.parse(args)))
+      () => createStreamingContext())
 
     val err = new StreamingErrorHandler
     ssc.addStreamingListener(err)
